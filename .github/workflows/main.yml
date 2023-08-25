@@ -4,20 +4,16 @@ on:
   workflow_dispatch: # for manual running
   pull_request:
 jobs:
-  Dependencies:
-    name: Install dependencies
+  compile-test:
     runs-on: ubuntu-latest
-    steps:
-      - name: Download dependencies
-        run: . ./script1.sh
-      
-  Compile-test:
-    # needs: Dependencies
-    runs-on: ubuntu-latest
-    # container: https://gasp.app.intel.com/
     steps:
       - name: Check out repositories
         uses: actions/checkout@v3
+      - name: Download dependencies
+        run: |
+          chmod +x ./.github/workflows/script1.sh
+          ./.github/workflows/script1.sh
       - name: Compile and test
         run: |
-          . ./script2.sh
+          chmod +x ./.github/workflows/script2.sh
+          ./.github/workflows/script2.sh
