@@ -5,9 +5,11 @@ on:
   pull_request:
 jobs:
   Dependencies:
+    name: Install dependencies
     runs-on: ubuntu-latest
-    - name: Download dependencies
-      run: ./script1.sh
+    steps:
+      - name: Download dependencies
+        run: ./script1.sh
       
   Compile-test:
     # needs: Dependencies
